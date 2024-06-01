@@ -8,7 +8,7 @@
 
 ## 选择合适的版本
 
-该项目包含两个版本，一个适用于 Spring5，另一个适用于 Spring6。
+该项目包含两个版本，一个适用于 Spring5，另一个适用于 Spring6。  
 对于 Spring5，应使用
 
 ```groovy kotlin
