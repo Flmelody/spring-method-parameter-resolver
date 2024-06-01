@@ -32,6 +32,7 @@ import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
+import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -229,8 +230,17 @@ public class WebParamMethodArgumentResolver extends AbstractNamedValueMethodArgu
         throw new MissingServletRequestPartException(name);
       }
     } else {
+      // Compatible with spring 5.3.6 before
+      if (ClassUtils.hasConstructor(
+          MissingServletRequestParameterException.class,
+          String.class,
+          String.class,
+          boolean.class)) {
+        throw new MissingServletRequestParameterException(
+            name, parameter.getNestedParameterType().getSimpleName(), missingAfterConversion);
+      }
       throw new MissingServletRequestParameterException(
-          name, parameter.getNestedParameterType().getSimpleName(), missingAfterConversion);
+          name, parameter.getNestedParameterType().getSimpleName());
     }
   }
 

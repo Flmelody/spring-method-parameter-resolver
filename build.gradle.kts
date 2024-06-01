@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "org.flmelody"
-version = "1.0.1-spring5"
+version = "1.0.2-spring5"
 
 repositories {
     mavenCentral()
