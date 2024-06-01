@@ -1,9 +1,9 @@
 [versions]
-boot-plugin = "2.7.18"
-google-guava = "33.2.0-jre"
+spring-boot-version = "2.7.18"
+google-guava-version = "33.2.0-jre"
 
 [plugins]
-spring-boot = { id = "org.springframework.boot", version.ref = "boot-plugin" }
 
 [libraries]
-guava = { module = "com.google.guava:guava", version.ref = "google-guava" }
+spring-boot-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring-boot-version" }
+guava = { module = "com.google.guava:guava", version.ref = "google-guava-version" }
