@@ -295,8 +295,8 @@ public class WebParamMethodArgumentResolver extends AbstractNamedValueMethodArgu
 
     if (value == null) {
       return null;
-    } else if (value instanceof String) {
-      return (String) value;
+    } else if (value instanceof String string) {
+      return string;
     } else if (cs != null) {
       return (String) cs.convert(value, sourceType, STRING_TYPE_DESCRIPTOR);
     } else {
@@ -312,6 +312,7 @@ public class WebParamMethodArgumentResolver extends AbstractNamedValueMethodArgu
             configurableBeanFactory.getBeansOfType(NamingStrategyHandler.class);
         this.namingStrategyHandlers.addAll(beansOfType.values());
       } catch (BeansException ignored) {
+        logger.debug("Unable to load naming handlers");
       }
     }
   }
