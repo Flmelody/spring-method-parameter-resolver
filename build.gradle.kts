@@ -1,14 +1,11 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id("java-library")
-    alias(libs.plugins.spring.boot)
     id("maven-publish")
     id("signing")
 }
-apply(plugin = "io.spring.dependency-management")
 
 group = "org.flmelody"
-version = "1.0.0-spring6"
+version = "1.0.1-spring6"
 
 repositories {
     mavenCentral()
@@ -16,7 +13,7 @@ repositories {
 
 dependencies {
     implementation(libs.guava)
-    compileOnly("org.springframework.boot:spring-boot-starter-web")
+    compileOnly(libs.spring.boot.web)
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
@@ -34,7 +31,7 @@ tasks.jar {
             mapOf(
                 "Implementation-Title" to project.name,
                 "Implementation-Version" to project.version,
-                "Compiled-Spring-Version" to libs.plugins.spring.boot.get().version
+                "Compiled-Spring-Boot-Version" to libs.versions.spring.boot.version.get()
             )
         )
     }
