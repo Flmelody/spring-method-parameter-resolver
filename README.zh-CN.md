@@ -1,5 +1,6 @@
 ![GitHub](https://img.shields.io/github/license/Flmelody/spring-method-parameter-resolver)
-![Dynamic XML Badge](https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Forg%2Fflmelody%2Fspring-method-parameter-resolver%2Fmaven-metadata.xml&query=%2F%2Fmetadata%2Fversioning%2Flatest&logo=apachemaven&logoColor=%23a34b08&label=spring-method-parameter-resolver&labelColor=%2308a31a)
+<img alt="Dynamic XML Badge" src="https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Forg%2Fflmelody%2Fspring-method-parameter-resolver%2Fmaven-metadata.xml&query=%2F%2Fmetadata%2Fversioning%2Fversions%2Fversion%5Bnot(contains(text()%2C'spring6'))%5D%5B1%5D&logo=apachemaven&logoColor=%23a34b08&label=spring-method-parameter-resolver&labelColor=%231ba12d">
+<img alt="Dynamic XML Badge" src="https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Forg%2Fflmelody%2Fspring-method-parameter-resolver%2Fmaven-metadata.xml&query=%2F%2Fmetadata%2Fversioning%2Fversions%2Fversion%5Bnot(contains(text()%2C'spring5'))%5D%5B1%5D&logo=apachemaven&logoColor=%23a34b08&label=spring-method-parameter-resolver&labelColor=%231ba12d">
 ## 介绍
 
 此包可帮助你实现 Spring 参数的自定义绑定，如参数名的自动转换，目前提供 RequestParam 增强功能。
