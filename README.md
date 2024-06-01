@@ -1,7 +1,9 @@
 ## Instruction
 
+[简体中文](README.zh-CN.md)
+
 This package can help you implement Spring parameter custom binding , such as automatic conversion of parameter names ,
-currently provides RequestParam enhancements .
+currently provides RequestParam enhancements.
 
 ## Choose correct version
 
