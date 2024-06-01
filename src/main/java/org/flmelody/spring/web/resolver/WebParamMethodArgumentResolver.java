@@ -34,6 +34,7 @@ import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
+import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -58,7 +59,6 @@ import java.util.Optional;
 
 /**
  * @author esotericman
- * @since spring 5.3
  */
 public class WebParamMethodArgumentResolver extends AbstractNamedValueMethodArgumentResolver
     implements WebMethodArgumentResolver, UriComponentsContributor, InitializingBean {
@@ -229,10 +229,18 @@ public class WebParamMethodArgumentResolver extends AbstractNamedValueMethodArgu
         throw new MissingServletRequestPartException(name);
       }
     } else {
-      // compatible with 6.0
-      //noinspection removal
-      throw new MissingServletRequestParameterException(
-          name, parameter.getNestedParameterType().getSimpleName(), missingAfterConversion);
+      if (ClassUtils.hasConstructor(
+          MissingServletRequestParameterException.class,
+          String.class,
+          String.class,
+          boolean.class)) {
+        // compatible with 6.0
+        //noinspection removal
+        throw new MissingServletRequestParameterException(
+            name, parameter.getNestedParameterType().getSimpleName(), missingAfterConversion);
+      }
+      // 6.1+
+      throw new MissingServletRequestParameterException(name, parameter, missingAfterConversion);
     }
   }
 
