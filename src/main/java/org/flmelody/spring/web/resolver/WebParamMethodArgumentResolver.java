@@ -16,6 +16,8 @@
 
 package org.flmelody.spring.web.resolver;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.Part;
 import org.flmelody.spring.web.annotation.WebParam;
 import org.flmelody.spring.web.standard.NamingStrategy;
 import org.flmelody.spring.web.standard.support.NamingStrategyHandler;
@@ -48,8 +50,6 @@ import org.springframework.web.multipart.support.MissingServletRequestPartExcept
 import org.springframework.web.multipart.support.MultipartResolutionDelegate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -229,6 +229,8 @@ public class WebParamMethodArgumentResolver extends AbstractNamedValueMethodArgu
         throw new MissingServletRequestPartException(name);
       }
     } else {
+      // compatible with 6.0
+      //noinspection removal
       throw new MissingServletRequestParameterException(
           name, parameter.getNestedParameterType().getSimpleName(), missingAfterConversion);
     }

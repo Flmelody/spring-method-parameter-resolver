@@ -1,5 +1,5 @@
 [versions]
-boot-plugin = "2.7.18"
+boot-plugin = "3.3.0"
 google-guava = "33.2.0-jre"
 
 [plugins]

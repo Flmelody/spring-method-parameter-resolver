@@ -8,7 +8,7 @@ plugins {
 apply(plugin = "io.spring.dependency-management")
 
 group = "org.flmelody"
-version = "1.0.0-spring5-SNAPSHOT"
+version = "1.0.0-spring6-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -22,8 +22,8 @@ dependencies {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
     withJavadocJar()
     withSourcesJar()
 }

@@ -26,7 +26,13 @@ import java.util.regex.Pattern;
  * @author esotericman
  */
 public class SnakeNamingStrategyHandler implements NamingStrategyHandler {
+  /**
+   * Lower camel pattern
+   */
   protected static final Pattern LOWER_CAMEL = Pattern.compile("^[a-z]+[a-zA-Z|0-9]*[a-z|0-9]+$");
+  /**
+   * Upper camel pattern
+   */
   protected static final Pattern UPPER_CAMEL = Pattern.compile("^[A-Z]+[a-zA-Z|0-9]*[a-z|0-9]+$");
 
   @Override
