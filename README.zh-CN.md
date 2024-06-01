@@ -24,15 +24,15 @@ implementation("org.flmelody:spring-method-parameter-resolver:x.y.z-spring6")
 - 启用解析器，请在任何`@Configuration`
   类中添加以下内容`@EnableWebResolver(paramNamingStrategy = NamingStrategy.SNAKE_CASE)`，例如
   ![img.png](img.png)
-- 用 `@WebParam` 代替 Spring 的 `@RequestParam
+- 用 `@WebParam` 代替 Spring 的 `@RequestParam`
   现在，您的请求参数可以接受蛇形参数名
 
 ## 创建你自己的NamingStrategyHandler
 
 - 实现 `NamingStrategyHandler`
-- 在BeanFactory中注册你实现的处理器
+- 在`BeanFactory`中注册你实现的处理器
 
 ## 创建你自己的MethodArgumentResolver
 
 - 实现 `WebMethodArgumentResolver`
-- 在BeanFactory中注册你实现的参数解析器
+- 在`BeanFactory`中注册你实现的参数解析器
