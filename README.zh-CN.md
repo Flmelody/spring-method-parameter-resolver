@@ -11,7 +11,7 @@
 implementation("org.flmelody:spring-method-parameter-resolver:x.y.z-spring5")
 ```
 
-对于 Spring5
+对于 Spring6
 
 ```groovy kotlin
 implementation("org.flmelody:spring-method-parameter-resolver:x.y.z-spring6")
