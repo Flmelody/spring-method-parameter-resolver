@@ -24,7 +24,7 @@ implementation("org.flmelody:spring-method-parameter-resolver:x.y.z-spring6")
 ## SpringBoot快速开始
 
 - 启用解析器，请在任何`@Configuration`
-  类中添加以下内容`@EnableWebResolver(paramNamingStrategy = NamingStrategy.SNAKE_CASE)`，例如
+  类中添加以下内容`@EnableWebResolver(paramNamingStrategy = NamingStrategy.SNAKE_CASE)`，例如  
   ![img.png](img.png)
 - 用 `@WebParam` 代替 Spring 的 `@RequestParam`
   现在，你的请求参数可以接受蛇形参数名
