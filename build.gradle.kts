@@ -32,7 +32,7 @@ tasks.jar {
             mapOf(
                 "Implementation-Title" to project.name,
                 "Implementation-Version" to project.version,
-                "Compiled-Spring-Version" to libs.spring.boot.web.get().versionConstraint.preferredVersion
+                "Compiled-Spring-Boot-Version" to libs.versions.spring.boot.version.get()
             )
         )
     }
