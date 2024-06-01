@@ -8,7 +8,7 @@ plugins {
 apply(plugin = "io.spring.dependency-management")
 
 group = "org.flmelody"
-version = "1.0.0-spring5-SNAPSHOT"
+version = "1.0.0-spring5"
 
 repositories {
     mavenCentral()
