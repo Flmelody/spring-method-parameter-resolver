@@ -14,34 +14,30 @@
  * limitations under the License.
  */
 
-package org.flmelody.spring.web.standard.support;
+package org.flmelody.spring.web.converter;
 
+import com.google.gson.Gson;
 import org.flmelody.spring.web.standard.NamingStrategy;
 import org.springframework.lang.NonNull;
 
+import java.io.Writer;
+import java.lang.reflect.Type;
+
 /**
- * Implement this interface to custom extend the naming conversion rules, of course, provided that
- * the scope of the existing naming rules, in addition you need to register the instance to the
- * BeanFactory.
- *
  * @author esotericman
  */
-public interface NamingStrategyHandler {
+public class DefaultGsonHttpMessageConverter extends AbstractEnhancedGsonHttpMessageConverter {
+  public DefaultGsonHttpMessageConverter(NamingStrategy namingStrategy) {
+    super(namingStrategy);
+  }
 
-  /**
-   * Whether the current naming strategy is supported.
-   *
-   * @param namingStrategy namingStrategy
-   * @return is it supported
-   */
-  boolean supportNamingStrategy(NamingStrategy namingStrategy);
+  public DefaultGsonHttpMessageConverter(NamingStrategy namingStrategy, Gson gson) {
+    super(namingStrategy, gson);
+  }
 
-  /**
-   * Converting value to defined naming convention.
-   *
-   * @param value value
-   * @return result value
-   */
-  @NonNull
-  String convertNamingConvention(String value);
+  @Override
+  protected void writeInternal(@NonNull Object object, Type type, @NonNull Writer writer)
+      throws Exception {
+    super.writeInternal(object, type, writer);
+  }
 }

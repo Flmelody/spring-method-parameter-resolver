@@ -16,40 +16,32 @@
 
 package org.flmelody.spring.web.annotation;
 
-import org.flmelody.spring.web.standard.NamingStrategy;
-import org.flmelody.spring.web.configuration.WebConfiguration;
-import org.flmelody.spring.web.standard.ValueStrategy;
-import org.springframework.context.annotation.Import;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import org.flmelody.spring.web.standard.NamingStrategy;
 
 /**
  * @author esotericman
  */
-@Target(ElementType.TYPE)
+@Target({ElementType.PARAMETER, ElementType.METHOD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Inherited
-@Import({WebConfiguration.class, WebConfiguration.WebConfigurationRegistrar.class})
-public @interface EnableWebResolver {
+public @interface WebResponseBody {
 
   /**
-   * The naming strategy of request parameter or request body or response body fields name globally.
+   * The naming strategy of response body fields
    *
    * @return naming strategy
    */
-  NamingStrategy namingStrategy() default NamingStrategy.LOWER_CAMEL_CASE;
+  NamingStrategy namingStrategy() default NamingStrategy.NONE;
 
   /**
-   * The value strategy of request parameter value or request body or response body fields value
-   * globally.
+   * Enable value strategy or not
    *
-   * @return value strategy
+   * @return value strategy enabled status
    */
-  ValueStrategy[] valueStrategies() default {};
+  boolean valueStrategy() default true;
 }

@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.guava)
+    compileOnly(libs.gson)
     compileOnly(libs.spring.boot.web)
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")

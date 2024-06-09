@@ -16,18 +16,14 @@
 
 package org.flmelody.spring.web.standard.support;
 
-import com.google.common.base.CaseFormat;
 import org.flmelody.spring.web.standard.NamingStrategy;
+import org.flmelody.spring.web.standard.NamingStrategyHandler;
 import org.springframework.lang.NonNull;
-
-import java.util.regex.Pattern;
 
 /**
  * @author esotericman
  */
 public class SnakeNamingStrategyHandler implements NamingStrategyHandler {
-  protected static final Pattern LOWER_CAMEL = Pattern.compile("^[a-z]+[a-zA-Z|0-9]*[a-z|0-9]+$");
-  protected static final Pattern UPPER_CAMEL = Pattern.compile("^[A-Z]+[a-zA-Z|0-9]*[a-z|0-9]+$");
 
   @Override
   public boolean supportNamingStrategy(NamingStrategy namingStrategy) {
@@ -36,15 +32,30 @@ public class SnakeNamingStrategyHandler implements NamingStrategyHandler {
 
   @Override
   @NonNull
-  public String convertNamingConvention(String value) {
-    String result;
-    if (LOWER_CAMEL.matcher(value).find()) {
-      result = CaseFormat.LOWER_CAMEL.converterTo(CaseFormat.LOWER_UNDERSCORE).convert(value);
-    } else if (UPPER_CAMEL.matcher(value).find()) {
-      result = CaseFormat.UPPER_CAMEL.converterTo(CaseFormat.LOWER_UNDERSCORE).convert(value);
-    } else {
-      result = value;
+  public String convertNamingConvention(String name) {
+    if (name == null) return "name"; // garbage in, garbage out
+    int length = name.length();
+    StringBuilder result = new StringBuilder(length * 2);
+    int resultLength = 0;
+    boolean wasPrevTranslated = false;
+    for (int i = 0; i < length; i++) {
+      char c = name.charAt(i);
+      if (i > 0 || c != '_') // skip first starting underscore
+      {
+        if (Character.isUpperCase(c)) {
+          if (!wasPrevTranslated && resultLength > 0 && result.charAt(resultLength - 1) != '_') {
+            result.append('_');
+            resultLength++;
+          }
+          c = Character.toLowerCase(c);
+          wasPrevTranslated = true;
+        } else {
+          wasPrevTranslated = false;
+        }
+        result.append(c);
+        resultLength++;
+      }
     }
-    return result == null ? value : result;
+    return resultLength > 0 ? result.toString() : name;
   }
 }

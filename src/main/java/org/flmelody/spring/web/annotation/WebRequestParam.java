@@ -17,6 +17,7 @@
 package org.flmelody.spring.web.annotation;
 
 import org.flmelody.spring.web.standard.NamingStrategy;
+import org.flmelody.spring.web.standard.ValueStrategy;
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ValueConstants;
@@ -35,7 +36,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.PARAMETER, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface WebParam {
+public @interface WebRequestParam {
 
   /**
    * Alias for {@link #name}.
@@ -60,6 +61,13 @@ public @interface WebParam {
    * @return naming strategy
    */
   NamingStrategy namingStrategy() default NamingStrategy.NONE;
+
+  /**
+   * Enable value strategy or not
+   *
+   * @return value strategy enabled status
+   */
+  boolean valueStrategy() default true;
 
   /**
    * Whether the parameter is required.

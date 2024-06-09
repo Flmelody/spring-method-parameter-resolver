@@ -14,11 +14,13 @@
  * limitations under the License.
  */
 
-package org.flmelody.spring.web.resolver;
+package org.flmelody.spring.web.converter;
 
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.core.Ordered;
+import org.springframework.http.converter.HttpMessageConverter;
 
 /**
  * @author esotericman
  */
-public interface WebMethodArgumentResolver extends HandlerMethodArgumentResolver {}
+public interface EnhancedHttpMessageConverter<T>
+    extends HttpMessageConverter<T>, Ordered {}

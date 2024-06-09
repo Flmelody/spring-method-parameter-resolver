@@ -22,31 +22,40 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.flmelody.spring.web.standard.NamingStrategy;
+import org.flmelody.spring.web.standard.ValueStrategy;
+import org.springframework.core.annotation.AliasFor;
+import org.springframework.stereotype.Controller;
 
 /**
  * @author esotericman
  */
-@Target(ElementType.PARAMETER)
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface WebBody {
-
+@Controller
+@WebResponseBody
+public @interface WebRestController {
   /**
-   * The naming strategy of request body fields
+   * The value may indicate a suggestion for a logical component name, to be turned into a Spring
+   * bean in case of an autodetected component.
+   *
+   * @return the suggested component name, if any (or empty String otherwise)
+   * @since 4.0.1
+   */
+  @AliasFor(annotation = Controller.class)
+  String value() default "";
+  /**
+   * The naming strategy of request param and body fields
    *
    * @return naming strategy
    */
   NamingStrategy namingStrategy() default NamingStrategy.NONE;
 
   /**
-   * Whether body content is required.
+   * The value strategy of request parameter value or request body or response body fields value
+   * globally.
    *
-   * <p>Default is {@code true}, leading to an exception thrown in case there is not body content.
-   * Switch this to {@code false} if you prefer {@code null} to be passed when the body content is
-   * {@code null}.
-   *
-   * @since 3.2
-   * @return is it required
+   * @return value strategy
    */
-  boolean required() default true;
+  ValueStrategy[] valueStrategies() default {};
 }

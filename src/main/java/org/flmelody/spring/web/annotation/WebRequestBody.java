@@ -16,40 +16,45 @@
 
 package org.flmelody.spring.web.annotation;
 
-import org.flmelody.spring.web.standard.NamingStrategy;
-import org.flmelody.spring.web.configuration.WebConfiguration;
-import org.flmelody.spring.web.standard.ValueStrategy;
-import org.springframework.context.annotation.Import;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import org.flmelody.spring.web.standard.NamingStrategy;
+import org.flmelody.spring.web.standard.ValueStrategy;
 
 /**
  * @author esotericman
  */
-@Target(ElementType.TYPE)
+@Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Inherited
-@Import({WebConfiguration.class, WebConfiguration.WebConfigurationRegistrar.class})
-public @interface EnableWebResolver {
+public @interface WebRequestBody {
 
   /**
-   * The naming strategy of request parameter or request body or response body fields name globally.
+   * The naming strategy of request body fields
    *
    * @return naming strategy
    */
-  NamingStrategy namingStrategy() default NamingStrategy.LOWER_CAMEL_CASE;
+  NamingStrategy namingStrategy() default NamingStrategy.NONE;
 
   /**
-   * The value strategy of request parameter value or request body or response body fields value
-   * globally.
+   * Enable value strategy or not
    *
-   * @return value strategy
+   * @return value strategy enabled status
    */
-  ValueStrategy[] valueStrategies() default {};
+  boolean valueStrategy() default true;
+
+  /**
+   * Whether body content is required.
+   *
+   * <p>Default is {@code true}, leading to an exception thrown in case there is not body content.
+   * Switch this to {@code false} if you prefer {@code null} to be passed when the body content is
+   * {@code null}.
+   *
+   * @since 3.2
+   * @return is it required
+   */
+  boolean required() default true;
 }
