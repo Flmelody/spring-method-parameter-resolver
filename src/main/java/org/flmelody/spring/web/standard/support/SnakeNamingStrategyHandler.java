@@ -18,7 +18,6 @@ package org.flmelody.spring.web.standard.support;
 
 import org.flmelody.spring.web.standard.NamingStrategy;
 import org.flmelody.spring.web.standard.NamingStrategyHandler;
-import org.springframework.lang.NonNull;
 
 /**
  * @author esotericman
@@ -31,9 +30,8 @@ public class SnakeNamingStrategyHandler implements NamingStrategyHandler {
   }
 
   @Override
-  @NonNull
   public String convertNamingConvention(String name) {
-    if (name == null) return "name"; // garbage in, garbage out
+    if (name == null) return null; // garbage in, garbage out
     int length = name.length();
     StringBuilder result = new StringBuilder(length * 2);
     int resultLength = 0;

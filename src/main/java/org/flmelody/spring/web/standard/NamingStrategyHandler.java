@@ -17,7 +17,6 @@
 package org.flmelody.spring.web.standard;
 
 import org.springframework.core.Ordered;
-import org.springframework.lang.NonNull;
 
 /**
  * Implement this interface to custom extend the naming conversion rules, of course, provided that
@@ -42,7 +41,6 @@ public interface NamingStrategyHandler extends Ordered {
    * @param name name
    * @return result name
    */
-  @NonNull
   String convertNamingConvention(String name);
 
   /**
