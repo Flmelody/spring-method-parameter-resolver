@@ -17,7 +17,6 @@
 package org.flmelody.spring.web.standard.support;
 
 import org.flmelody.spring.web.standard.NamingStrategy;
-import org.springframework.lang.NonNull;
 
 /**
  * Implement this interface to custom extend the naming conversion rules, of course, provided that
@@ -42,6 +41,5 @@ public interface NamingStrategyHandler {
    * @param value value
    * @return result value
    */
-  @NonNull
   String convertNamingConvention(String value);
 }

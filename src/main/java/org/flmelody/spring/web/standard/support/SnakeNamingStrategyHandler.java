@@ -18,7 +18,6 @@ package org.flmelody.spring.web.standard.support;
 
 import com.google.common.base.CaseFormat;
 import org.flmelody.spring.web.standard.NamingStrategy;
-import org.springframework.lang.NonNull;
 
 import java.util.regex.Pattern;
 
@@ -41,7 +40,6 @@ public class SnakeNamingStrategyHandler implements NamingStrategyHandler {
   }
 
   @Override
-  @NonNull
   public String convertNamingConvention(String value) {
     String result;
     if (LOWER_CAMEL.matcher(value).find()) {
