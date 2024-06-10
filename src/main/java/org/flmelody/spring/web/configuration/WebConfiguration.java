@@ -125,6 +125,7 @@ public class WebConfiguration implements WebMvcConfigurer, BeanFactoryAware {
       // Register json library if possibly
       tryRegisterJsonBeanIfMissing(registry, namingStrategy);
 
+      // Register resolver for request param
       registerSyntheticBeanIfMissing(
           registry,
           "webParamMethodArgumentResolver",
@@ -135,6 +136,7 @@ public class WebConfiguration implements WebMvcConfigurer, BeanFactoryAware {
                   true,
                   namingStrategy,
                   valueStrategies));
+      // Register resolver for request body and response body
       registerSyntheticBeanIfMissing(
           registry,
           "webBodyMethodArgumentResolverFactory",
