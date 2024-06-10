@@ -31,6 +31,7 @@ sonar {
         property("sonar.projectKey", "Flmelody_spring-method-parameter-resolver")
         property("sonar.organization", "flmelody")
         property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.gradle.skipCompile", true)
     }
 }
 
