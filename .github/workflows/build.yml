@@ -1,0 +1,5 @@
+on:
+  push:
+    branches:
+      - spring6
+      - spring5
