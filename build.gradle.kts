@@ -1,5 +1,6 @@
 plugins {
     id("java-library")
+    id("org.sonarqube") version "4.4.1.3373"
     id("maven-publish")
     id("signing")
 }
@@ -23,6 +24,14 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
     withJavadocJar()
     withSourcesJar()
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "Flmelody_spring-method-parameter-resolver")
+        property("sonar.organization", "flmelody")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
 }
 
 tasks.jar {
